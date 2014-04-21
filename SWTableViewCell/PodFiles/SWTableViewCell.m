@@ -117,12 +117,14 @@
     
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTapped:)];
     self.tapGestureRecognizer.cancelsTouchesInView = NO;
+    self.tapGestureRecognizer.enabled = NO;
     [self.cellScrollView addGestureRecognizer:self.tapGestureRecognizer];
     
     self.longPressGestureRecognizer = [[SWLongPressGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewPressed:)];
     self.longPressGestureRecognizer.cancelsTouchesInView = NO;
     self.longPressGestureRecognizer.minimumPressDuration = kLongPressMinimumDuration;
     self.longPressGestureRecognizer.delegate = self;
+    self.longPressGestureRecognizer.enabled = NO;
     [self.cellScrollView addGestureRecognizer:self.longPressGestureRecognizer];
     
     // Create the left and right utility button views, as well as vanilla UIViews in which to embed them.  We can manipulate the latter in order to effect clipping according to scroll position.
