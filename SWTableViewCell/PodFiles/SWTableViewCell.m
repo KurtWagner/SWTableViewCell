@@ -101,6 +101,7 @@ static NSString * const kTableViewCellContentView = @"UITableViewCellContentView
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                            action:@selector(scrollViewUp:)];
     tapGestureRecognizer.cancelsTouchesInView = NO;
+    tapGestureRecognizer.enabled = NO;
     [cellScrollView addGestureRecognizer:tapGestureRecognizer];
     
     self.tapGestureRecognizer = tapGestureRecognizer;
@@ -110,6 +111,7 @@ static NSString * const kTableViewCellContentView = @"UITableViewCellContentView
     longPressGestureRecognizer.cancelsTouchesInView = NO;
     longPressGestureRecognizer.minimumPressDuration = kLongPressMinimumDuration;
     longPressGestureRecognizer.delegate = self;
+    longPressGestureRecognizer.enabled = NO;
     [cellScrollView addGestureRecognizer:longPressGestureRecognizer];
     
     self.longPressGestureRecognizer = longPressGestureRecognizer;
@@ -439,7 +441,7 @@ static NSString * const kTableViewCellContentView = @"UITableViewCellContentView
     targetContentOffset->x = [self leftUtilityButtonsWidth];
     _cellState = kCellStateCenter;
     
-    self.longPressGestureRecognizer.enabled = YES;
+    self.longPressGestureRecognizer.enabled = NO;
     self.tapGestureRecognizer.enabled = NO;
 
     if ([self.delegate respondsToSelector:@selector(swipeableTableViewCell:scrollingToState:)])
